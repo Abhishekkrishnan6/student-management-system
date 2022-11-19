@@ -88,7 +88,8 @@ USE_TZ = True
 STATIC_URL = "/static/"
 STATIC_ROOT = "/staic"
 STATICFILES_DIRS = [
-    os.psth.join(BASE_DIR,'static')
+    os.path.join(BASE_DIR,'static')
 ]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+AUTH_USER_MODEL  = 'student_management.CustomUser'
