@@ -11,14 +11,15 @@ from .import views,Hod_Views,Staff_Views,Student_Views
 
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path("admin/", admin.site.urls), #not working
     path("base/" , views.BASE,name='base'),
     #login path
     path("" ,views.LOGIN,name='login' ),
-    path('doLogin',views.doLogin,name='doLogin'),
+    path('doLogin',views.doLogin,name='doLogin'), #not working
+    path('doLogout',views.doLogout,name='logout'),
     #this is hod pannel url
 
-    path('HOD/Home',Hod_Views.HOME,name = 'home')
+    path('Hod/Home',Hod_Views.HOME,name = 'hod_home')
 
 
 ] + static(settings.MEDIA_URL,document_root= settings.MEDIA_ROOT)
