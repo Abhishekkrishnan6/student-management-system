@@ -63,14 +63,14 @@ def PROFILE_UPDATE(request):
             customuser.first_name = first_name
             customuser.last_name = last_name
 
-
+            #customuser.profile_pic = profile_pic
             if password != None and password != "":
                 customuser.set_password(password)
             if profile_pic != None and profile_pic != "":
                 customuser.profile_pic = profile_pic
             customuser.save()
             messages.success(request,'yoyr profile update3d succesfully')
-            redirect('profile')
+            return redirect('profile')
         except:
             messages.error(request,'failed to update your profile')
 
