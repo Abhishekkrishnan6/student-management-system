@@ -1,11 +1,10 @@
 {% extends 'base.html' %}
-
 {% block content %}
 <div class="row">
 <div class="col-sm-12">
 <div class="card">
 <div class="card-body">
-<form method="post" action="{% url 'profile_update' %}" enctype="multipart/form-data">
+<form method="post" action="{% url 'add_student' %}" enctype="multipart/form-data">
     {% csrf_token %}
 
 <div class="col-12">
@@ -75,7 +74,7 @@
      <div class="col-12 col-sm-11">
 <div class="form-group">
 <label>Address</label>
-    <textarea class="form-control"></textarea>
+    <textarea class="form-control" name="address"></textarea>
 </div>
 </div>
 
@@ -84,7 +83,7 @@
 
 <div class="col-12 col-sm-11">
 <label>Gender</label>
-<select class="form-control">
+<select class="form-control" name="gender">
     <option>Select Gender</option>
 <option>Male</option>
 <option>Female</option>
@@ -94,7 +93,7 @@
     <br>
     <div class="col-12 col-sm-11">
 <label>Course</label>
-<select class="form-control">
+<select class="form-control" name="course_id">
     <option>Select Course</option>
     {% for i in course %}
      <option value="{{i.id}}">{{i.name}}</option>
@@ -104,7 +103,7 @@
     <br>
     <div class="col-12 col-sm-11">
     <label>Session Year</label>
-<select class="form-control">
+<select class="form-control" name="session_year_id">
     <option>Select Session_Year</option>
 
     {% for i in session_year %}
