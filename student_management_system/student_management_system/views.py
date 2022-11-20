@@ -4,6 +4,7 @@ from student_management.EmailBackEnd import EmailBackEnd
 from django.contrib.auth import authenticate , logout,login
 from django.contrib import messages
 from django.contrib.auth.decorators import  login_required
+from student_management.models import CustomUser
 
 def BASE(request):
     return render(request,'base.html')
@@ -38,4 +39,40 @@ def doLogout(request):
     return redirect('login')
 
 
+@login_required(login_url='/')
+def PROFILE(request):
+    user= CustomUser.objects.get(id = request.user.id)
+    context = {
+        "user":user,
+    }
+    return render(request,'profile.html',context)
 
+
+@login_required(login_url='/')
+def PROFILE_UPDATE(request):
+    if request.method == "POST":
+        profile_pic = request.FILES.get('profile_pic')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        # email = request.POST.get('email')
+        # username = request.POST.get('username')
+        password = request.POST.get('password')
+        print(profile_pic,first_name,last_name,password)
+        try:
+            customuser = CustomUser.objects.get(id=request.user.id)
+            customuser.first_name = first_name
+            customuser.last_name = last_name
+
+
+            if password != None and password != "":
+                customuser.set_password(password)
+            if profile_pic != None and profile_pic != "":
+                customuser.profile_pic = profile_pic
+            customuser.save()
+            messages.success(request,'yoyr profile update3d succesfully')
+            redirect('profile')
+        except:
+            messages.error(request,'failed to update your profile')
+
+
+    return render(request,'profile.html')
