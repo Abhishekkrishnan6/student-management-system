@@ -65,3 +65,7 @@ def ADD_STUDENT(request):
     }
 
     return render(request , 'Hod1/add_student.html',context)
+
+
+def VIEW_STUDENT(request):
+    return render(request,'Hod1/view_student.html')
