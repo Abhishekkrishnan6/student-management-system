@@ -68,4 +68,9 @@ def ADD_STUDENT(request):
 
 
 def VIEW_STUDENT(request):
-    return render(request,'Hod1/view_student.html')
+    student = Student.objects.all()
+    #print(student)
+    context = {
+        'student':student,
+    }
+    return render(request,'Hod1/view_student.html',context)
