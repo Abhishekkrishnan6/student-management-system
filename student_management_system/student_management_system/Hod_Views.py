@@ -39,7 +39,7 @@ def ADD_STUDENT(request):
                 user_type = 3
 
             )
-            user.set_password = password
+            user.set_password( password)
             user.save()
 
             course = Course.objects.get(id=course_id)
@@ -53,7 +53,7 @@ def ADD_STUDENT(request):
                 gender=gender,
             )
             student.save()
-            messages.success(request,'students are successfully saved')
+            messages.success(request,user.first_name + "  " + user.last_name + " Are Successfully added")
             return redirect('add_student')
 
 

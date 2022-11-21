@@ -69,7 +69,7 @@ def PROFILE_UPDATE(request):
             if profile_pic != None and profile_pic != "":
                 customuser.profile_pic = profile_pic
             customuser.save()
-            messages.success(request,'yoyr profile update3d succesfully')
+            messages.success(request,'your profile updated succesfully')
             return redirect('profile')
         except:
             messages.error(request,'failed to update your profile')
