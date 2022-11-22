@@ -141,7 +141,7 @@ def UPDATE_STUDENT(request):
 def DELETE_STUDENT(request,admin):
     student = CustomUser.objects.get(id= admin)
     student.delete()
-    messages.success((request,'Reord are successfully deleted'))
+    messages.success(request,'Record are successfully deleted')
     return redirect('view_student')
 
 
@@ -166,3 +166,34 @@ def VIEW_COURSE(request):
         'course':course
     }
     return render(request,'Hod1/view_course.html',context)
+
+
+def EDIT_COURSE(request,id):
+    course = Course.objects.get(id = id)
+    context = {
+        'course':course,
+    }
+    return render(request,'Hod1/edit_course.html',context)
+
+
+def UPDATE_COURSE(request ):
+    if request.method == "POST":
+        name = request.POST.get('name')
+        # course_name = request.POST.get('course_name')
+        course_id = request.POST.get('course_id')
+        # print(course_name,course_id)
+        course = Course.objects.get(id = course_id)
+        course.name = name
+        course.save()
+        messages.success(request,'Course are successfully added')
+        return redirect('view_course')
+
+
+    return render(request,'Hod1/edit_course.html')
+
+
+def DELETE_COURSE(request,id):
+    course = Course.objects.get(id = id)
+    course.delete()
+    messages.success(request,'Courseare successfully delete')
+    return redirect('view_course')
