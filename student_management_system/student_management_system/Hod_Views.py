@@ -143,3 +143,26 @@ def DELETE_STUDENT(request,admin):
     student.delete()
     messages.success((request,'Reord are successfully deleted'))
     return redirect('view_student')
+
+
+def ADD_COURSE(request):
+    if request.method == "POST":
+        course_name = request.POST.get('course_name')
+        #print(course_name)
+
+        course = Course(
+            name = course_name,
+        )
+        course.save()
+        messages.success(request,'Course Are succesfully created')
+        return redirect('add_course')
+    return render(request,'Hod1/add_course.html')
+
+
+def VIEW_COURSE(request):
+    course = Course.objects.all()
+    #print(course)
+    context={
+        'course':course
+    }
+    return render(request,'Hod1/view_course.html',context)
