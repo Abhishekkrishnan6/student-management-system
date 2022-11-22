@@ -1,5 +1,4 @@
 from django.shortcuts import render , redirect ,HttpResponse
-
 from student_management.EmailBackEnd import EmailBackEnd
 from django.contrib.auth import authenticate , logout,login
 from django.contrib import messages

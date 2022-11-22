@@ -74,3 +74,15 @@ def VIEW_STUDENT(request):
         'student':student,
     }
     return render(request,'Hod1/view_student.html',context)
+
+
+def EDIT_STUDENT(request,id):
+    student = Student.objects.filter(id = id)
+    course = Course.objects.all()
+    session_year = Session_Year.objects.all()
+    context = {
+        'student':student,
+        'course':course,
+        'session_year':session_year,
+    }
+    return render(request,'Hod1/edit_student.html',context)
