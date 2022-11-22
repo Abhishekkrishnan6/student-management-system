@@ -22,3 +22,15 @@ Then go to the browser and enter the url **http://127.0.0.1:8000/**
 ## Login
 
 The login page is common for Admin ,Staff and Student.
+
+You can access the django admin page at **http://127.0.0.1:8000/admin**
+
+Also a new admin user can be created using
+
+```bash
+python manage.py createsuperuser
+```
+
+## Users
+
+New students and teachers can be added through the admin page. A new user needs to be created for each.
