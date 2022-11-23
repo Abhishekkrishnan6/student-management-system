@@ -1,11 +1,30 @@
 from django.shortcuts import  render, redirect
 from django.contrib.auth.decorators import  login_required
 
-from student_management.models import  Course,Session_Year,CustomUser,Student
+from student_management.models import  Course,Session_Year,CustomUser,Student,Staff
 from django.contrib import messages
 @login_required(login_url='/')
 def HOME(request):
-    return render(request,'Hod1/home.html')
+    student_count = Student.objects.all().count()
+    staff_count = Staff.objects.all().count()
+    course_count = Course.objects.all().count()
+
+    student_gender_male = Student.objects.filter(gender = 'Male').count()
+    student_gender_female =Student.objects.filter(gender = 'Female').count()
+    #print(student_gender_female,student_gender_male)
+
+    context = {
+        'student_count':student_count,
+        'staff_count':staff_count,
+        'course_count':course_count,
+        'student_gender_male':student_gender_male,
+        'student_gender_female':student_gender_female,
+
+
+    }
+    #return render(request,'Hod/home.html')
+
+    return render(request,'Hod1/home.html',context)
 
 @login_required(login_url='/')
 def ADD_STUDENT(request):
@@ -197,3 +216,57 @@ def DELETE_COURSE(request,id):
     course.delete()
     messages.success(request,'Courseare successfully delete')
     return redirect('view_course')
+
+
+def ADD_STAFF(request):
+    if request.method == "POST":
+        profile_pic = request.FILES.get('profile_pic')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        email = request.POST.get('email')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        address = request.POST.get('address')
+        gender = request.POST.get('gender')
+        if CustomUser.objects.filter(email=email).exists():
+            messages.warning(request,'Email is Already Taken')
+            return redirect('add_staff')
+        if CustomUser.objects.filter(username=username).exists():
+            messages.warning(request,'Username is Already Taken')
+            return redirect('add_staff')
+       # print(profile_pic,first_name,last_name,password,email,username,address,gender)
+
+        else:
+            user = CustomUser(first_name = first_name , last_name = last_name,email=email,username = username ,profile_pic=profile_pic,user_type=2)
+            user.set_password(password)
+            user.save()
+
+            staff = Staff(
+                   admin = user,
+                address = address,
+                gender = gender
+            )
+            staff.save()
+
+            messages.success(request,'Staff are successfully added')
+            return redirect('add_staff')
+
+
+    return render(request,'Hod1/add_staff.html')
+
+
+def VIEW_STAFF(request):
+    staff = Staff.objects.all()
+    print(staff)
+    context = {
+        'staff':staff,
+    }
+    return render(request , 'Hod1/view_staff.html',context)
+
+
+def EDIT_STAFF(request,id):
+    staff = Staff.objects.get(id = id)
+    ontext = {
+        'staff': staff,
+    }
+    return render(request,'Hod1/edit_staff.html')
