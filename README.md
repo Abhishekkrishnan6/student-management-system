@@ -34,3 +34,4 @@ python manage.py createsuperuser
 ## Users
 
 New students and teachers can be added through the admin page. A new user needs to be created for each.
+The admin page is used to modify all tables such as Students, Teachers, Departments, Courses, Classes etc.
