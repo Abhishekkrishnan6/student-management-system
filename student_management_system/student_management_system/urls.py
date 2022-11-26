@@ -47,6 +47,7 @@ urlpatterns = [
 
     #subjects
     path('Hod/Subject/Add',Hod_Views.ADD_SUBJECT,name = 'add_subject'),
+    path('Hod/Subject/View',Hod_Views.VIEW_SUBJECT,name = 'view_subject'),
     #student url
     path('Student/Home', Student_Views.Home, name='student_home'),
 
