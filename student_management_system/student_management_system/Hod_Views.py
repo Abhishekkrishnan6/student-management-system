@@ -358,3 +358,16 @@ def VIEW_SUBJECT(request):
 
     }
     return render(request,'Hod1/view_subject.html',context)
+
+@login_required(login_url='/')
+def EDIT_SUBJECT(request , id):
+    subject = Subject.objects.get(id=id)
+    course = Course.objects.all()
+    staff = Staff.objects.all()
+    context = {
+        'subject':subject,
+        'course':course,
+        'staff':staff
+    }
+
+    return render(request,'Hod1/edit_subject.html',context)
