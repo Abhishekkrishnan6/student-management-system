@@ -450,3 +450,11 @@ def UPDATE_SESSION(request):
         session.save()
         messages.success(request,'Session Are successfully updated')
         return redirect(('view_session'))
+
+
+def DELETE_SESSION(request,id):
+    session = Session_Year.objects.get(id = id)
+    session.delete()
+    messages.success(request,'Session Are Sussessfully Delete')
+
+    return redirect('view_session')
