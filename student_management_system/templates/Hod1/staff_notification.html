@@ -87,7 +87,47 @@
         </button>
       </div>
       <div class="modal-body">
+ <div class="row">
+                  <div class="col-sm-12">
+                     <div class="card card-table">
+                        <div class="card-body">
+                           <div class="table-responsive">
+                              <table id="table_id" class="table table-hover table-center mb-0 ">
+                                 <thead>
+                                    <tr>
 
+                                       <th style="width:60%">Message</th>
+
+
+
+                                       <th style="width:30%" class="text-right">Status</th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                 {% for i in see_notification %}
+                                    <tr>
+                                       <td>{{i.message}} </td>
+
+                                        {%  if i.status == 0 %}
+
+                                       <td><span class="badge badge-danger"> UnRead The Message </span></td>
+<!--                                       <td>{{i.course_id.name}}</td>-->
+                                        {% else %}
+                                      <td><span class="badge badge-success"> Read The Message </span></td>
+                                        {% endif %}
+
+
+                                       </td>
+                                    </tr>
+                                 {% endfor %}
+
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
