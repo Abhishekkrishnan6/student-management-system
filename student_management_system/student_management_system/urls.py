@@ -59,11 +59,12 @@ path('Hod/Session/Edit/<str:id>',Hod_Views.EDIT_SESSION,name = 'edit_session'),
 path('Hod/Session/Update',Hod_Views.UPDATE_SESSION,name = 'update_session'),
 path('Hod/Session/Delete/<str:id>',Hod_Views.DELETE_SESSION,name = 'delete_session'),
 path('Hod/Staff/Send_Notification',Hod_Views.STAFF_SEND_NOTIFICATION,name = 'staff_send_notification'),
-path('Hod/Saff/save_notification',Hod_Views.SAVE_STAFF_NOTIFICATION,name = 'save_staff_notification'),
+    path('Hod/Saff/save_notification',Hod_Views.SAVE_STAFF_NOTIFICATION,name = 'save_staff_notification'),
     #this is staff url
     path('Staff/Home',Staff_Views.HOME,name = 'staff_home'),
+path('Staff/Notification',Staff_Views.NOTIFICATIONS,name = 'notifications'),
     #student url
-    path('Student/Home', Student_Views.Home, name='student_home'),
+    #path('Student/Home', Student_Views.HOME, name='student_home'),
 
 
 
