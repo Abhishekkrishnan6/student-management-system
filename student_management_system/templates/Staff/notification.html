@@ -35,12 +35,23 @@
                                     </tr>
                                  </thead>
                                  <tbody>
-                                 {% for i in course %}
+                                 {% for i in notification %}
                                     <tr>
-                                       <td>dsfsfs</td>
+                                       <td>{{i.message}}</td>
+
+
+
                                        <td class="text-right">
                                           <div class="actions">
 
+                                             {% if i.status == 0 %}
+
+                                             <a href="{% url 'staff_notification_mark_as_done' status=i.id %}" class="btn btn-danger">Mark As Done</a>
+                                            {% else %}
+                                             <button class="btn btn-danger" disabled="disabled">Mark As Done</button>
+
+
+                                             {% endif %}
                                           </div>
                                        </td>
                                     </tr>

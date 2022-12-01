@@ -63,6 +63,8 @@ path('Hod/Staff/Send_Notification',Hod_Views.STAFF_SEND_NOTIFICATION,name = 'sta
     #this is staff url
     path('Staff/Home',Staff_Views.HOME,name = 'staff_home'),
 path('Staff/Notification',Staff_Views.NOTIFICATIONS,name = 'notifications'),
+path('Staff/mark_as_done/<str:status>',Staff_Views.STAFF_NOTIFICATION_MARK_AS_DONE,name = 'staff_notification_mark_as_done'),
+
     #student url
     #path('Student/Home', Student_Views.HOME, name='student_home'),
 
