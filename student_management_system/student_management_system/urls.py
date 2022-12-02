@@ -31,6 +31,9 @@ urlpatterns = [
     path('Hod/Student/Edit/<str:id>',Hod_Views.EDIT_STUDENT,name = 'edit_student'),
     path('Hod/Student/Update',Hod_Views.UPDATE_STUDENT,name = 'update_student'),
     path('Hod/Student/Delete/<str:admin>',Hod_Views.DELETE_STUDENT,name = 'delete_student'),
+    path('Hod/Staff/Leave_view',Hod_Views.STAFF_LEAVE_VIEW,name = 'staff_leave_view'),
+path('Hod/Staff/approve_leave/<str:id>',Hod_Views.STAFF_APPROVE_LEAVE,name = 'staff_approve_leave'),
+path('Hod/Staff/disapprove_leave/<str:id>',Hod_Views.STAFF_DISAPPROVE_LEAVE,name = 'staff_disapprove_leave'),
 
     #staff
     path('Hod/Staff/Add',Hod_Views.ADD_STAFF,name = 'add_staff'),
@@ -55,15 +58,18 @@ urlpatterns = [
     #seasons
     path('Hod/Session/Add',Hod_Views.ADD_SESSION,name = 'add_session'),
     path('Hod/Session/View',Hod_Views.VIEW_SESSION,name = 'view_session'),
-path('Hod/Session/Edit/<str:id>',Hod_Views.EDIT_SESSION,name = 'edit_session'),
-path('Hod/Session/Update',Hod_Views.UPDATE_SESSION,name = 'update_session'),
-path('Hod/Session/Delete/<str:id>',Hod_Views.DELETE_SESSION,name = 'delete_session'),
-path('Hod/Staff/Send_Notification',Hod_Views.STAFF_SEND_NOTIFICATION,name = 'staff_send_notification'),
+    path('Hod/Session/Edit/<str:id>',Hod_Views.EDIT_SESSION,name = 'edit_session'),
+    path('Hod/Session/Update',Hod_Views.UPDATE_SESSION,name = 'update_session'),
+    path('Hod/Session/Delete/<str:id>',Hod_Views.DELETE_SESSION,name = 'delete_session'),
+    path('Hod/Staff/Send_Notification',Hod_Views.STAFF_SEND_NOTIFICATION,name = 'staff_send_notification'),
     path('Hod/Saff/save_notification',Hod_Views.SAVE_STAFF_NOTIFICATION,name = 'save_staff_notification'),
     #this is staff url
     path('Staff/Home',Staff_Views.HOME,name = 'staff_home'),
-path('Staff/Notification',Staff_Views.NOTIFICATIONS,name = 'notifications'),
-path('Staff/mark_as_done/<str:status>',Staff_Views.STAFF_NOTIFICATION_MARK_AS_DONE,name = 'staff_notification_mark_as_done'),
+    path('Staff/Notification',Staff_Views.NOTIFICATIONS,name = 'notifications'),
+   path('Staff/mark_as_done/<str:status>',Staff_Views.STAFF_NOTIFICATION_MARK_AS_DONE,name = 'staff_notification_mark_as_done'),
+   path('Staff/Apply_leave',Staff_Views.STAFF_APPLY_LEAVE,name = 'staff_apply_leave'),
+path('Staff/Apply_leave_save',Staff_Views.STAFF_APPLY_LEAVE_SAVE,name = 'staff_apply_leave_save'),
+
 
     #student url
     #path('Student/Home', Student_Views.HOME, name='student_home'),
