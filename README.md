@@ -25,6 +25,9 @@ The login page is common for Admin ,Staff and Student.
 
 You can access the django admin page at **http://127.0.0.1:8000/admin**
 
+like email = abhii@gmail.com
+password = 1234567890
+
 Also a new admin user can be created using
 
 ```bash
