@@ -1,7 +1,7 @@
 from django.shortcuts import  render, redirect
 from django.contrib.auth.decorators import  login_required
 
-from student_management.models import  Course,Session_Year,CustomUser,Student,Staff,Subject,Staff_Notification,Staff_leave
+from student_management.models import  Course,Session_Year,CustomUser,Student,Staff,Subject,Staff_Notification,Staff_leave,Staff_Feedback
 from django.contrib import messages
 @login_required(login_url='/')
 def HOME(request):
@@ -374,7 +374,7 @@ def EDIT_SUBJECT(request , id):
 
     return render(request,'Hod1/edit_subject.html',context)
 
-
+@login_required(login_url='/')
 def UPDATE_SUBJECT(request):
     if request.method == 'POST':
         subject_id = request.POST.get('subject_id')
@@ -396,14 +396,14 @@ def UPDATE_SUBJECT(request):
         messages.success(request,'Subject Are successfully updated')
         return redirect('view_subject')
 
-
+@login_required(login_url='/')
 def DELETE_SUBJECT(request,id):
     subject = Subject.objects.filter(id = id)
     subject.delete()
     messages.success(request,'Subject are successfully deleted')
     return redirect('view_subject')
 
-
+@login_required(login_url='/')
 def ADD_SESSION(request):
     if request.method == "POST":
         session_year_start = request.POST.get('session_year_start')
@@ -419,7 +419,7 @@ def ADD_SESSION(request):
 
     return render(request,'Hod1/add_session.html')
 
-
+@login_required(login_url='/')
 def VIEW_SESSION(request):
     session = Session_Year.objects.all()
     context = {
@@ -427,7 +427,7 @@ def VIEW_SESSION(request):
     }
     return render(request,'Hod1/view_session.html',context)
 
-
+@login_required(login_url='/')
 def EDIT_SESSION(request,id):
     session = Session_Year.objects.filter(id = id)
     context = {
@@ -435,7 +435,7 @@ def EDIT_SESSION(request,id):
     }
     return render(request,'Hod1/edit_session.html',context)
 
-
+@login_required(login_url='/')
 def UPDATE_SESSION(request):
 
     if request.method == "POST":
@@ -453,7 +453,7 @@ def UPDATE_SESSION(request):
         messages.success(request,'Session Are successfully updated')
         return redirect(('view_session'))
 
-
+@login_required(login_url='/')
 def DELETE_SESSION(request,id):
     session = Session_Year.objects.get(id = id)
     session.delete()
@@ -461,7 +461,7 @@ def DELETE_SESSION(request,id):
 
     return redirect('view_session')
 
-
+@login_required(login_url='/')
 def STAFF_SEND_NOTIFICATION(request):
     staff = Staff.objects.all()
     see_notification = Staff_Notification.objects.all().order_by('-id')[0:5]
@@ -471,7 +471,7 @@ def STAFF_SEND_NOTIFICATION(request):
     }
     return render(request,'Hod1/staff_notification.html',context)
 
-
+@login_required(login_url='/')
 def SAVE_STAFF_NOTIFICATION(request):
     if request.method == "POST":
         staff_id = request.POST.get('staff_id')
@@ -488,7 +488,7 @@ def SAVE_STAFF_NOTIFICATION(request):
         messages.success(request,'Nofication Send Successfully')
         return  redirect('staff_send_notification')
 
-
+@login_required(login_url='/')
 def STAFF_LEAVE_VIEW(request):
     staff_leave = Staff_leave.objects.all()
 
@@ -497,7 +497,7 @@ def STAFF_LEAVE_VIEW(request):
     }
     return render(request,'Hod1/staff_leave.html',context)
 
-
+@login_required(login_url='/')
 def STAFF_APPROVE_LEAVE(request,id):
     leave = Staff_leave.objects.get(id = id)
     leave.status = 1
@@ -505,10 +505,29 @@ def STAFF_APPROVE_LEAVE(request,id):
 
     return redirect('staff_leave_view')
 
-
+@login_required(login_url='/')
 def STAFF_DISAPPROVE_LEAVE(request,id):
     leave = Staff_leave.objects.get(id=id)
     leave.status = 2
     leave.save()
 
     return redirect('staff_leave_view')
+
+
+def STAFF_FEEDBACK(request):
+    feedback = Staff_Feedback.objects.all()
+    context={
+        'feedback':feedback
+    }
+    return render(request,'Hod1/staff_feedback.html',context)
+
+
+def STAFF_FEEDBACK_SAVE(request):
+    if request.method == 'POST':
+        feedback_id = request.POST.get('feedback_id')
+        feedback_reply = request.POST.get('feedback_reply')
+
+        feedback = Staff_Feedback.objects.get(id =feedback_id)
+        feedback.feedback_reply = feedback_reply
+        feedback.save()
+        return redirect('staff_feedback_reply')

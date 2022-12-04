@@ -63,16 +63,19 @@ path('Hod/Staff/disapprove_leave/<str:id>',Hod_Views.STAFF_DISAPPROVE_LEAVE,name
     path('Hod/Session/Delete/<str:id>',Hod_Views.DELETE_SESSION,name = 'delete_session'),
     path('Hod/Staff/Send_Notification',Hod_Views.STAFF_SEND_NOTIFICATION,name = 'staff_send_notification'),
     path('Hod/Saff/save_notification',Hod_Views.SAVE_STAFF_NOTIFICATION,name = 'save_staff_notification'),
+path('Hod/Session/feedback',Hod_Views.STAFF_FEEDBACK,name = 'staff_feedback_reply'),
+path('Hod/Session/feedback_save',Hod_Views.STAFF_FEEDBACK_SAVE,name = 'staff_feedback_reply_save'),
     #this is staff url
     path('Staff/Home',Staff_Views.HOME,name = 'staff_home'),
     path('Staff/Notification',Staff_Views.NOTIFICATIONS,name = 'notifications'),
-   path('Staff/mark_as_done/<str:status>',Staff_Views.STAFF_NOTIFICATION_MARK_AS_DONE,name = 'staff_notification_mark_as_done'),
-   path('Staff/Apply_leave',Staff_Views.STAFF_APPLY_LEAVE,name = 'staff_apply_leave'),
-path('Staff/Apply_leave_save',Staff_Views.STAFF_APPLY_LEAVE_SAVE,name = 'staff_apply_leave_save'),
-
-
+    path('Staff/mark_as_done/<str:status>',Staff_Views.STAFF_NOTIFICATION_MARK_AS_DONE,name = 'staff_notification_mark_as_done'),
+    path('Staff/Apply_leave',Staff_Views.STAFF_APPLY_LEAVE,name = 'staff_apply_leave'),
+    path('Staff/Apply_leave_save',Staff_Views.STAFF_APPLY_LEAVE_SAVE,name = 'staff_apply_leave_save'),
+    path('Staff/Feedback',Staff_Views.STAFF_FEEDBACK,name = 'staff_feedback'),
+    path('Staff/Feedback/Save', Staff_Views.STAFF_FEEDBACK_SAVE, name='staff_feedback_save'),
+path('Staff/Take_Attendance',Staff_Views.STAFF_TAKE_ATTENDANCE,name = 'staff_take_attendance'),
     #student url
-    #path('Student/Home', Student_Views.HOME, name='student_home'),
+    path('Student/Home', Student_Views.HOME, name='student_home'),
 
 
 
