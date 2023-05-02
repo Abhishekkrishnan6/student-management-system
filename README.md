@@ -1,4 +1,4 @@
-A student management system built using Django framework. It is designed for interactions between students and teachers. Features include attendance, marks and time table.
+A student management system built using Django framework. It is designed for interactions between students and teachers. Features include attendance, marks etc.
 
 
 ## Installation
