@@ -6,8 +6,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from .import views,Hod_Views,Staff_Views,Student_Views
 
-
-
+from django.views.static import serve
+from django.conf.urls import url
 
 
 urlpatterns = [
@@ -83,5 +83,10 @@ urlpatterns = [
     path('Student/View_Attendance', Student_Views.STUDENT_VIEW_ATTENDANCE, name='student_view_attendance'),
 
 
+
+
+url(r'^media/(?p<path>.*)$', serve,{'document_root':        settings.MEDIA_ROOT}),
+
+url(r'^static/(?p<path>.*)$', serve,{'document_root':        settings.STATIC_ROOT}),
 
 ] + static(settings.MEDIA_URL,document_root= settings.MEDIA_ROOT)

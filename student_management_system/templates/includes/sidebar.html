@@ -93,9 +93,9 @@
                            <li class="{% active_link 'staff_take_attendance' 'active' %}">
                         <a href="{% url 'staff_take_attendance' %}"><i class="fas fa-calendar-alt"></i> <span>Take Attendance</span></a>
 
-                       <li class="{% active_link '' 'active' %}">
+                       <li class="{% active_link 'staff_view_attendance' 'active' %}">
 
-                        <a href=""><i class="fas fa-calendar-alt"></i> <span>View/Update Attendance</span></a>
+                        <a href="{% url 'staff_view_attendance' %}"><i class="fas fa-calendar-alt"></i> <span>View/Update Attendance</span></a>
                      </li >
 
                         <li class="{% active_link '' 'active' %}">
@@ -139,8 +139,8 @@
                         <a href="{% url 'student_home' %}"><i class="fas fa-holly-berry"></i> <span>Dashboard</span></a>
                      </li >
 
-                       <li class="{% active_link 'hod_home' 'active' %}">
-                        <a href="{% url 'student_home' %}"><i class="fas fa-calendar" aria-hidden="true"></i> <span>View Attendance</span></a>
+                       <li class="{% active_link 'student_view_attendance' 'active' %}">
+                        <a href="{% url 'student_view_attendance' %}"><i class="fas fa-calendar" aria-hidden="true"></i> <span>View Attendance</span></a>
                      </li >
 
                        <li class="{% active_link 'hod_home' 'active' %}">
